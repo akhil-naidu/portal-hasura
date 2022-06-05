@@ -3,13 +3,13 @@
 First, add a remote to the repository of your project.
 
 ```
-git remote add -f hasura https://github.com/akhil-naidu/portal-hasura
+git remote add -f hasura-portal https://github.com/akhil-naidu/portal-hasura
 ```
 
 Now let's make this a subtree
 
 ```
-git add subtree --prefix hasura hasura master --squash
+git add subtree --prefix hasura hasura-portal master --squash
 ```
 
 # How to update this subtree repository from the parent repository
@@ -19,7 +19,7 @@ Let's assume you added a few changes in the `hasura` folder of the parent reposi
 Also, the moment you push the changes to the parent repository, they will not get in sync with this subtree repository. You need to manually push the changes to the subtree repository
 
 ```
-git subtree push --prefix hasura hasura master
+git subtree push --prefix hasura hasura-portal master
 ```
 
 # How to update the parent repository if the subtree repository was updated
@@ -33,5 +33,5 @@ cd hasura
 Pulling the changes as a merge commit (I prefer to squash)
 
 ```
-git subtree pull --prefix hasura hasura master --squash
+git subtree pull --prefix hasura hasura-portal master --squash
 ```
