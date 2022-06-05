@@ -9,7 +9,7 @@ git remote add -f portal-hasura https://github.com/akhil-naidu/portal-hasura
 Now let's make this a subtree
 
 ```
-git add subtree --prefix hasura portal-hasura master --squash
+git subtree add --prefix hasura portal-hasura master --squash
 ```
 
 # How to update this subtree repository from the parent repository
