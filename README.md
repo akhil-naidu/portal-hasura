@@ -1,26 +1,37 @@
-# Hasura
+# How to utilize this repository
 
-There exists a docker-compose.yml in the root of the repository, which will allow us to run Hasura locally.
-
-Apart from this, there is a folder named `hasura` which allows us to work with github integrations.
-
-### Installing Hasura CLI
+First, add a remote to the repository of your project.
 
 ```
-curl -L https://github.com/hasura/graphql-engine/raw/stable/cli/get.sh | bash
+git remote add -f portal-hasura https://github.com/akhil-naidu/portal-hasura
 ```
 
-After installing the Hasura CLI, use the following [documentation](https://hasura.io/docs/latest/graphql/core/hasura-cli/hasura_completion/) to set up the auto-completion.
+Now let's make this a subtree
 
-# Things I have done while configuring this project
+```
+git subtree add --prefix hasura portal-hasura master --squash
+```
 
-1. Used yarn set version stable
-2. Extended `.gitignore` by adding `.yarn/cache` and `.yarn/install-state.gz`
+# How to update this subtree repository from the parent repository
 
-# Technologies used for this project
+Let's assume you added a few changes in the `hasura` folder of the parent repository and also git push those changes to the parent repository
 
-1. NextJS as Fullstack application
-2. TypeScript in place of Javascript
-3. Zustand as State Management Tool
-4. Mantine UI for Frontend UI
-5. Hasura GraphQL as the Backend
+Also, the moment you push the changes to the parent repository, they will not get in sync with this subtree repository. You need to manually push the changes to the subtree repository
+
+```
+git subtree push --prefix hasura portal-hasura master
+```
+
+# How to update the parent repository if the subtree repository was updated
+
+First change to the subtree directory (mandatory)
+
+```
+cd hasura
+```
+
+Pulling the changes as a merge commit (I prefer to squash)
+
+```
+git subtree pull --prefix hasura portal-hasura master --squash
+```
